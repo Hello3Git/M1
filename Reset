@@ -11,7 +11,7 @@ local function teleportBack(player)
         local humanoidRootPart = character.HumanoidRootPart
         local originalPosition = humanoidRootPart.Position
         local direction = humanoidRootPart.CFrame.LookVector -- Direction of where the player is facing
-        local newPosition = originalPosition - direction * 26 -- Teleport 26 meters backward
+        local newPosition = originalPosition - direction * 25 -- Teleport 25 meters backward
 
         humanoidRootPart.CFrame = CFrame.new(newPosition)
     end

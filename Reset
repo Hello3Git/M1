@@ -1,0 +1,23 @@
+-- Create Tool
+local tool = Instance.new("Tool")
+tool.Name = "M1 Reset"
+tool.RequiresHandle = false
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+-- Function to teleport the player
+local function teleportBack(player)
+    local character = player.Character
+    if character and character:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = character.HumanoidRootPart
+        local originalPosition = humanoidRootPart.Position
+        local direction = humanoidRootPart.CFrame.LookVector -- Direction of where the player is facing
+        local newPosition = originalPosition - direction * 26 -- Teleport 26 meters backward
+
+        humanoidRootPart.CFrame = CFrame.new(newPosition)
+    end
+end
+
+-- Connect to Tool activation
+tool.Activated:Connect(function()
+    teleportBack(game.Players.LocalPlayer)
+end)
